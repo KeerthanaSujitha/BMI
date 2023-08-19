@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #e1f7d5; /* Custom background color */
+  }
+  .container {
+    text-align: center;
+    padding: 40px; /* Increased padding for larger dialog box */
+    background-color: #ffffff;
+    border-radius: 10px; /* Slightly rounded corners */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+  }
+  h1 {
+    color: #2980b9; /* Custom title color */
+  }
+  label {
+    font-weight: bold;
+    color: #34495e;
+  }
+  input[type="number"] {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  button {
+    background-color: #3498db;
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  button:hover {
+    background-color: #2980b9;
+  }
+  #result {
+    font-weight: bold;
+    margin-top: 20px;
+    color: #2ecc71;
+  }
+  #result-display {
+    display: none;
+    padding: 20px;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    margin-top: 20px;
+    color: #333;
+  }
+</style>
+<title>BMI Calculator</title>
+</head>
+<body>
+<div class="container">
+  <h1>BMI Calculator</h1>
+  <label for="gender">Gender:</label>
+  <input type="radio" name="gender" value="male" id="male" checked>
+  <label for="male">Male</label>
+  <input type="radio" name="gender" value="female" id="female">
+  <label for="female">Female</label>
+  <br><br>
+  <label for="age">Age:</label>
+  <input type="number" id="age" required>
+  <br><br>
+  <label for="weight">Weight (kg):</label>
+  <input type="number" id="weight" required>
+  <br><br>
+  <label for="height">Height (inches):</label>
+  <input type="number" step="0.01" id="height" required>
+  <br><br>
+  <button onclick="calculateBMI()">Calculate BMI</button>
+  <div id="result-display">
+    <p id="result"></p>
+  </div>
+</div>
+
+<script>
+  function calculateBMI() {
+    const gender = document.querySelector('input[name="gender"]:checked').value;
+    const age = parseFloat(document.getElementById('age').value);
+    const weight = parseFloat(document.getElementById('weight').value);
+    const heightInInches = parseFloat(document.getElementById('height').value);
+    const heightInMeters = heightInInches * 0.0254; // Convert inches to meters
+    const resultDisplay = document.getElementById('result');
+    const resultDisplayContainer = document.getElementById('result-display');
+
+    if (isNaN(age) || isNaN(weight) || isNaN(heightInInches)) {
+      resultDisplay.textContent = 'Please enter valid values.';
+      return;
+    }
+    
+    const bmi = weight / (heightInMeters ** 2);
+    let category = '';
+
+    if (bmi < 18.5) {
+      category = 'Underweight';
+    } else if (bmi < 24.9) {
+      category = 'Normal weight';
+    } else if (bmi < 29.9) {
+      category = 'Overweight';
+    } else {
+      category = 'Obesity';
+    }
+
+    resultDisplay.textContent = `BMI: ${bmi.toFixed(2)} - ${category}`;
+    resultDisplayContainer.style.display = 'block'; // Show result display
+  }
+</script>
+</body>
+</html>
