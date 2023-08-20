@@ -12,21 +12,29 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #e1f7d5; /* Custom background color */
+    background-color: #387e85; /* Custom background color */
   }
   .container {
-    text-align: center;
-    padding: 40px; /* Increased padding for larger dialog box */
-    background-color: #ffffff;
-    border-radius: 10px; /* Slightly rounded corners */
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow */
-  }
-  h1 {
-    color: #2980b9; /* Custom title color */
-  }
+  text-align: center;
+  padding: 60px; /* Increased padding for larger container */
+  background-color: #000000;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  border: none;
+  outline: none;
+  width: 70%; /* Increased width for larger container */
+  max-width: 500px; /* Limit maximum width */
+}
+ 
+h1 {
+    color: #498ebb;
+    margin-top: 10px;
+  padding-top: 10px; /* Add top padding for spacing */
+}
+
   label {
     font-weight: bold;
-    color: #34495e;
+    color: #ffffff;
   }
   input[type="number"] {
     padding: 8px;
@@ -34,7 +42,7 @@
     border-radius: 4px;
   }
   button {
-    background-color: #3498db;
+    background-color: #34c2db;
     color: white;
     padding: 12px 24px;
     border: none;
@@ -42,21 +50,21 @@
     cursor: pointer;
   }
   button:hover {
-    background-color: #2980b9;
+    background-color: #3a91b4;
   }
   #result {
     font-weight: bold;
     margin-top: 20px;
-    color: #2ecc71;
+    color: #075527;
   }
   #result-display {
-    display: none;
-    padding: 20px;
-    background-color: #f5f5f5;
-    border-radius: 8px;
-    margin-top: 20px;
-    color: #333;
-  }
+  display: none;
+  padding: 20px;
+  background-color: rgba(92, 83, 83, 0.7); /* Transparent black background */
+  border-radius: 8px;
+  margin-top: 20px;
+  color: #333;
+}
 </style>
 <title>BMI Calculator</title>
 </head>
